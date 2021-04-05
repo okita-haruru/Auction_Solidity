@@ -39,13 +39,21 @@ contract("1nd MetaCoin test", async accounts => {
     let coin = await MetaCoin.deployed();
     let instance = await deal.deployed();
     await coin.transfer(accounts[2],10000);
+
+    let balance = await coin.balanceOf.call(accounts[2]);
+    console.log("before:"+balance.toNumber());
+
     await coin.approve(instance.address,10000,{from:accounts[2]});
     await instance.bid(10000,{from:accounts[2]});
+
+    balance = await coin.balanceOf.call(accounts[2]);
+    console.log("after:"+balance.toNumber());
+
     let temp=await coin.balanceOf.call(accounts[0]);
     console.log(temp.toNumber());
     await instance.auctionDeal_Price();
     let ended= await instance.ended.call();
-    assert.equale(ended.toBool(),true);
+    assert.equal(ended,true);
   });
 
   /*it("take out", async () => {

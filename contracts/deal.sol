@@ -81,7 +81,7 @@ contract SimpleAuction {
         emit AuctionEnded(highestBidder, highestBid);
 
         //beneficiary.transfer(highestBid);
-        erc.transfer(beneficiary, highestBid);
+        //erc.transfer(beneficiary, highestBid);
     }
     
     function auctionDeal_Price() public {
@@ -93,7 +93,7 @@ contract SimpleAuction {
         emit AuctionEnded(highestBidder, highestBid);
 
         //beneficiary.transfer(highestBid);
-        erc.transfer(beneficiary, highestBid);
+        //erc.transfer(beneficiary, highestBid);
     }
     
     function checkMyPrice() public returns (uint){
