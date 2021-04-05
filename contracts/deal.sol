@@ -46,7 +46,7 @@ contract SimpleAuction {
             value+pendingReturns[msg.sender] > highestBid,
             "There already is a higher bid."
         );//出价太低
-        erc.transferFrom(msg.sender, beneficiary, value);
+        erc.transferFrom(msg.sender, address(this), value);
         bidded=true;
         if (highestBid != 0) {
             pendingReturns[highestBidder] += highestBid;
@@ -81,7 +81,7 @@ contract SimpleAuction {
         emit AuctionEnded(highestBidder, highestBid);
 
         //beneficiary.transfer(highestBid);
-        //erc.transfer(beneficiary, highestBid);
+        erc.transfer(beneficiary, highestBid);
     }
     
     function auctionDeal_Price() public {
@@ -93,7 +93,7 @@ contract SimpleAuction {
         emit AuctionEnded(highestBidder, highestBid);
 
         //beneficiary.transfer(highestBid);
-        //erc.transfer(beneficiary, highestBid);
+        erc.transfer(beneficiary, highestBid);
     }
     
     function checkMyPrice() public returns (uint){
