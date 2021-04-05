@@ -4,7 +4,7 @@ const TokenERC20 = artifacts.require("TokenERC20");
 module.exports = function (deployer) {
     //deployer.deploy(Migrations);
     //deployer.deploy(TokenERC20);
-    deployer.deploy(SimpleAuction,1000,10000,200,TokenERC20.address);
+    deployer.deploy(SimpleAuction,20,10000,200,TokenERC20.address);
     
 
   };

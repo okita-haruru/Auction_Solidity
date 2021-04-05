@@ -11,6 +11,7 @@ contract SimpleAuction {
     uint public highestBid;
     uint public fixedPrice;
     uint public lowestPrice;
+    //uint public temp;
     TokenERC20 public erc;
 
     //取出列表
@@ -98,6 +99,7 @@ contract SimpleAuction {
     
     function checkMyPrice() public returns (uint){
         require(!ended, "auctionEnd has already been called.");
+        temp=pendingReturns[msg.sender];
         return pendingReturns[msg.sender];
     }
     
