@@ -99,7 +99,7 @@ contract SimpleAuction {
     
     function checkMyPrice() public returns (uint){
         require(!ended, "auctionEnd has already been called.");
-        temp=pendingReturns[msg.sender];
+        //temp=pendingReturns[msg.sender];
         return pendingReturns[msg.sender];
     }
     
