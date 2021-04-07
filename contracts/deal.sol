@@ -56,7 +56,7 @@ contract SimpleAuction {
         highestBidder = msg.sender;
         highestBid = value + pendingReturns[msg.sender];
         pendingReturns[msg.sender]=0;
-        emit HighestBidIncreased(msg.sender, value + pendingReturns[msg.sender]);
+        emit HighestBidIncreased(msg.sender, highestBid);
     }
 
     /// 取回出价（当该出价已被超越）
@@ -97,7 +97,7 @@ contract SimpleAuction {
         erc.transfer(beneficiary, highestBid);
     }
     
-    function checkMyPrice() public returns (uint){
+    function checkMyPrice() public view returns (uint){
         require(!ended, "auctionEnd has already been called.");
         //temp=pendingReturns[msg.sender];
         return pendingReturns[msg.sender];
