@@ -49,14 +49,14 @@ contract SimpleAuction {
         );//出价太低
         erc.transferFrom(msg.sender, address(this), value);
         bidded=true;
+        highestBidder = msg.sender;
+        highestBid = value + pendingReturns[msg.sender];
+        emit HighestBidIncreased(msg.sender, highestBid);
         if (highestBid != 0) {
             pendingReturns[highestBidder] += highestBid;
         }
-        
-        highestBidder = msg.sender;
-        highestBid = value + pendingReturns[msg.sender];
         pendingReturns[msg.sender]=0;
-        emit HighestBidIncreased(msg.sender, highestBid);
+        
     }
 
     /// 取回出价（当该出价已被超越）
